@@ -112,7 +112,7 @@
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td class="fw-600">Vendora</td>
+                        <td class="fw-600">Ntɛm</td>
                         <td>Andrea Pirlo</td>
                         <td><span class="badge badge-teal">Premium</span></td>
                         <td><span class="badge badge-success">Active</span></td>

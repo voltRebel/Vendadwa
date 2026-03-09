@@ -157,8 +157,22 @@ try {
 
     if (!columnExists($pdo, 'users', 'company_id')) {
         $pdo->exec("ALTER TABLE users ADD COLUMN company_id INT NULL AFTER id");
-        $pdo->exec("ALTER TABLE users ADD CONSTRAINT fk_user_company FOREIGN KEY (company_id) REFERENCES companies(id) ON DELETE SET NULL");
         echo "Added 'company_id' to 'users' table.<br>";
+    }
+
+    // Ensure company-specific users are removed when a company is deleted
+    try {
+        // Drop existing constraint (if it exists) so we can recreate it with CASCADE
+        $pdo->exec("ALTER TABLE users DROP FOREIGN KEY fk_user_company");
+    } catch (Exception $e) {
+        // Constraint might not exist yet – safe to ignore
+    }
+
+    try {
+        $pdo->exec("ALTER TABLE users ADD CONSTRAINT fk_user_company FOREIGN KEY (company_id) REFERENCES companies(id) ON DELETE CASCADE");
+        echo "Ensured 'users.company_id' foreign key cascades on company delete.<br>";
+    } catch (Exception $e) {
+        // If this fails, don't block the rest of the migration
     }
     
     // Ensure 'role' is VARCHAR and not ENUM
@@ -516,7 +530,7 @@ try {
     $existingSuper = $stmt->fetch();
     
     if (!$existingSuper) {
-        $name = 'Vendora Super Admin';
+        $name = 'Ntɛm Super Admin';
         $hashedPassword = password_hash($superPassword, PASSWORD_DEFAULT);
         
         $insert = $pdo->prepare("INSERT INTO users (name, username, password, role, company_id) VALUES (?, ?, ?, 'super_admin', NULL)");
@@ -531,14 +545,14 @@ try {
     }
 
     // 6. Initialize a Test Company
-    $pdo->exec("UPDATE companies SET name = 'Vendora', email = 'info@vendora.com' WHERE name = 'SlayBees Apparel' OR name = 'SlayBees'");
+    $pdo->exec("UPDATE companies SET name = 'Ntɛm', email = 'info@ntempos.com' WHERE name = 'SlayBees Apparel' OR name = 'SlayBees' OR name = 'Vendora'");
     
-    $stmt = $pdo->query("SELECT id FROM companies WHERE name = 'Vendora' LIMIT 1");
+    $stmt = $pdo->query("SELECT id FROM companies WHERE name = 'Ntɛm' LIMIT 1");
     $testCompany = $stmt->fetch();
     if (!$testCompany) {
-        $pdo->exec("INSERT INTO companies (name, email) VALUES ('Vendora', 'info@vendora.com')");
+        $pdo->exec("INSERT INTO companies (name, email) VALUES ('Ntɛm', 'info@ntempos.com')");
         $companyId = $pdo->lastInsertId();
-        echo "Test Company 'Vendora' created.<br>";
+        echo "Test Company 'Ntɛm' created.<br>";
 
         // Create an Admin for this company
         $adminUsername = 'admin';
@@ -547,8 +561,8 @@ try {
         if (!$stmt->fetch()) {
             $password = password_hash('password123', PASSWORD_DEFAULT);
             $insert = $pdo->prepare("INSERT INTO users (name, username, password, role, company_id) VALUES (?, ?, ?, ?, ?)");
-            $insert->execute(['Vendora Admin', $adminUsername, $password, 'admin', $companyId]);
-            echo "Admin for Vendora created: <b>$adminUsername</b><br>";
+            $insert->execute(['Ntɛm Admin', $adminUsername, $password, 'admin', $companyId]);
+            echo "Admin for Ntɛm created: <b>$adminUsername</b><br>";
         }
     } else {
         $companyId = $testCompany['id']; // Get company ID if it already exists
@@ -559,12 +573,12 @@ try {
         if (!$stmt->fetch()) {
             $password = password_hash('password123', PASSWORD_DEFAULT);
             $insert = $pdo->prepare("INSERT INTO users (name, username, password, role, company_id) VALUES (?, ?, ?, ?, ?)");
-            $insert->execute(['Vendora Admin', $adminUsername, $password, 'admin', $companyId]);
-            echo "Admin for Vendora created: <b>$adminUsername</b><br>";
+            $insert->execute(['Ntɛm Admin', $adminUsername, $password, 'admin', $companyId]);
+            echo "Admin for Ntɛm created: <b>$adminUsername</b><br>";
         }
     }
 
-    echo "<br><b>Vendora Multi-Tenancy Setup/Migration Complete!</b><br>";
+    echo "<br><b>Ntɛm Multi-Tenancy Setup/Migration Complete!</b><br>";
     echo "<a href='index.php?page=login'>Go to Login Page</a>";
 
 } catch (PDOException $e) {

@@ -1,6 +1,6 @@
 <?php
 /**
- * Vendora — POS & Inventory System
+ * Ntɛm — POS & Inventory System
  * Main Router
  */
 

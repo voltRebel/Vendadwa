@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login — Vendora</title>
+    <title>Login — Ntɛm</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -22,14 +22,13 @@
     <div class="auth-card">
         <!-- Logo -->
         <div class="auth-logo">
-            <img src="assets/image/logo.png" alt="Vendora Logo" style="height: 60px; margin-bottom: 12px;">
-    
+            <img src="assets/image/logo.png" alt="Ntɛm Logo" style="height: 60px; margin-bottom: 12px;">
         </div>
 
         <!-- Title -->
         <div class="auth-title">
             <h2>Welcome Back</h2>
-            <p>Sign in to your Vendora account</p>
+            <p>Sign in to your Ntɛm account</p>
         </div>
 
         <form class="auth-form" id="loginForm">
@@ -62,7 +61,7 @@
         </form>
 
         <div class="auth-footer">
-            <p>Vendora POS v1.0 &middot; &copy; <?= date('Y') ?></p>
+            <p>Ntɛm POS v1.0 &middot; &copy; <?= date('Y') ?></p>
         </div>
     </div>
 </div>

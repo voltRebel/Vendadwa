@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $tables[] = $row[0];
             }
 
-            $sqlDump = "-- Vendora POS Backup\n";
+            $sqlDump = "-- Ntɛm POS Backup\n";
             $sqlDump .= "-- Company ID: $company_id\n";
             $sqlDump .= "-- Date: " . date('Y-m-d H:i:s') . "\n\n";
 
@@ -295,7 +295,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // CLEAR CACHE
     // =============================================
     } elseif ($action === 'clear_cache') {
-        // For Vendora, we'll clear logs and any temporary files in assets/img/temp if it exists
+        // For Ntɛm, we'll clear logs and any temporary files in assets/img/temp if it exists
         try {
             // Logic to clear session files or logs if applicable
             // For now, let's just simulate or clear a specific directory

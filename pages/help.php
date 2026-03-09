@@ -12,10 +12,10 @@
         <div class="text-center mb-24">
             <div class="mb-16 d-flex justify-center">
                 <div style="width:80px;height:80px;border-radius:20px;background:linear-gradient(135deg, var(--primary-100), var(--primary-50));display:flex;align-items:center;justify-content:center;">
-                    <img src="assets/image/logo.png" alt="Vendora Logo" style="height: 56px; object-fit: contain;">
+                    <img src="assets/image/logo.png" alt="Ntɛm Logo" style="height: 56px; object-fit: contain;">
                 </div>
             </div>
-            <h2 style="font-size:1.75rem;margin-bottom:4px;font-weight:800;letter-spacing:-0.5px;">Vendora</h2>
+            <h2 style="font-size:1.75rem;margin-bottom:4px;font-weight:800;letter-spacing:-0.5px;">Ntɛm</h2>
             <p class="text-muted" style="font-size:0.9rem;font-weight:500;">Point of Sale & Inventory System</p>
         </div>
 
@@ -45,7 +45,7 @@
         <div class="text-center">
             <p class="text-muted" style="font-size:0.8rem;">Developed & Maintained by</p>
             <p class="fw-700 text-teal mt-4" style="font-size:0.95rem;">Alsoft Solutions</p>
-            <p class="text-muted mt-8" style="font-size:0.75rem;">&copy; <?= date('Y') ?> Vendora. All rights reserved.</p>
+            <p class="text-muted mt-8" style="font-size:0.75rem;">&copy; <?= date('Y') ?> Ntɛm. All rights reserved.</p>
         </div>
     </div>
 
@@ -154,7 +154,7 @@
                 <div class="fw-800 text-muted" style="font-size:0.8rem; width:80px; flex-shrink:0;">JAN 2026</div>
                 <div>
                     <div class="fw-700 mb-4" style="font-size:0.85rem;">Initial Concept</div>
-                    <p class="text-muted" style="font-size:0.75rem; line-height:1.5;">Development of Vendora engine and database schema by Alsoft Solutions.</p>
+                    <p class="text-muted" style="font-size:0.75rem; line-height:1.5;">Development of Ntɛm engine and database schema by Alsoft Solutions.</p>
                 </div>
             </div>
         </div>

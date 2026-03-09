@@ -1,6 +1,6 @@
-# Vendora
+# Ntɛm
 
-Vendora is a multi-tenant PHP point-of-sale (POS) and inventory management system designed to run on a typical XAMPP/LAMP stack. This repository contains the web application and database migration scripts for setting up and managing companies, branches, users, products, sales, expenses, backups and more.
+Ntɛm is a multi-tenant PHP point-of-sale (POS) and inventory management system designed to run on a typical XAMPP/LAMP stack. This repository contains the web application and database migration scripts for setting up and managing companies, branches, users, products, sales, expenses, backups and more.
 
 ---
 
@@ -43,13 +43,13 @@ $db_pass = '';             // your DB password (empty by default on XAMPP)
   - This script will:
     - Create or update all required tables (companies, users, products, sales, etc.).
     - Create a default **Super Admin** user.
-    - Create a test **Vendora** company and an **Admin** user for it (if needed).
+    - Create a test **Ntɛm** company and an **Admin** user for it (if needed).
 
 - **5. Default login credentials**
   - **Super Admin**
     - Username: `Roach`
     - Password: `flying@DUTCHMAN97`
-  - **Company Admin (Vendora)**
+  - **Company Admin (Ntɛm)**
     - Username: `admin`
     - Password: `password123`
 
@@ -106,7 +106,7 @@ From the project root (`Vendora` folder), run:
 ```bash
 git init
 git add .
-git commit -m "Initial Vendora POS setup"
+git commit -m "Initial Ntɛm POS setup"
 ```
 
 > If you are reading this in the GitHub repo, the above commands were already run for the first commit.

@@ -1,5 +1,5 @@
 /**
- * Vendora — POS System
+ * Ntɛm — POS System
  * Main Application JavaScript
  */
 

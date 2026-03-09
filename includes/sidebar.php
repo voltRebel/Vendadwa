@@ -5,7 +5,7 @@ $userRole = isset($_SESSION['user_role']) ? $_SESSION['user_role'] : 'user';
 $userName = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : 'User';
 $companyId = isset($_SESSION['company_id']) ? $_SESSION['company_id'] : null;
 
-$companyName = 'Vendora';
+$companyName = 'Ntɛm';
 $companyLogo = 'assets/image/logo.png'; // Default
 
 if ($companyId && $userRole !== 'super_admin') {

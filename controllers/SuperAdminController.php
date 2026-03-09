@@ -113,23 +113,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         } else if ($action === 'delete_company') {
             $id = isset($_POST['id']) ? (int)$_POST['id'] : 0;
-            
+
             $stmt = $pdo->prepare("SELECT logo FROM companies WHERE id = ?");
             $stmt->execute([$id]);
             $company = $stmt->fetch();
-            
+
             if ($company) {
-                if ($company['logo']) {
-                    $logoPath = '../assets/image/logos/' . $company['logo'];
-                    if (file_exists($logoPath)) unlink($logoPath);
-                }
-                
-                $stmt = $pdo->prepare("DELETE FROM companies WHERE id = ?");
-                ob_clean();
-                if ($stmt->execute([$id])) {
-                    echo json_encode(['status' => 'success', 'message' => 'Company deleted successfully.']);
-                } else {
-                    echo json_encode(['status' => 'error', 'message' => 'Failed to delete company.']);
+                try {
+                    $pdo->beginTransaction();
+
+                    // Delete logo file from disk if present
+                    if (!empty($company['logo'])) {
+                        $logoPath = '../assets/image/logos/' . $company['logo'];
+                        if (file_exists($logoPath)) {
+                            @unlink($logoPath);
+                        }
+                    }
+
+                    // Deleting the company will cascade to all related records via FKs
+                    $stmt = $pdo->prepare("DELETE FROM companies WHERE id = ?");
+                    $success = $stmt->execute([$id]);
+
+                    if ($success) {
+                        $pdo->commit();
+                        ob_clean();
+                        echo json_encode(['status' => 'success', 'message' => 'Company and all associated data deleted successfully.']);
+                    } else {
+                        $pdo->rollBack();
+                        ob_clean();
+                        echo json_encode(['status' => 'error', 'message' => 'Failed to delete company.']);
+                    }
+                } catch (Exception $e) {
+                    if ($pdo->inTransaction()) {
+                        $pdo->rollBack();
+                    }
+                    ob_clean();
+                    echo json_encode(['status' => 'error', 'message' => 'Error while deleting company: ' . $e->getMessage()]);
                 }
             } else {
                 ob_clean();
