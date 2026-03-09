@@ -1,0 +1,17 @@
+vendor/
+node_modules/
+composer.lock
+package-lock.json
+*.log
+*.sql
+*.sqlite
+.env
+.env.*
+*.cache
+.DS_Store
+Thumbs.db
+/.idea/
+/.vscode/
+/.history/
+/.cursor/
+backups/
